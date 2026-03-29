@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>✿ YUCCHI'S HAPPY TIMER 🧚</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Comfortaa:wght@700&family=Zen+Maru+Gothic:wght@400;700&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+#yk * { margin: 0; padding: 0; box-sizing: border-box; }
+#yk {
+  width: 100%; min-height: 100vh;
+  background: linear-gradient(160deg, #ffe4f3 0%, #ffecd5 20%, #ead5ff 40%, #d5e8ff 65%, #d5fff0 100%);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 16px 40px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  position: relative; overflow-x: hidden;
+}
+#yk .fl { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+#yk .fl span { position: absolute; opacity: .55; animation: ykflt 5s ease-in-out infinite; user-select: none; }
+#yk .fl span:nth-child(1){top:4%;left:6%;font-size:22px}
+#yk .fl span:nth-child(2){top:8%;right:9%;animation-delay:1.1s;font-size:16px}
+#yk .fl span:nth-child(3){top:32%;left:2%;animation-delay:2.3s;font-size:14px}
+#yk .fl span:nth-child(4){top:26%;right:3%;animation-delay:.6s;font-size:18px}
+#yk .fl span:nth-child(5){bottom:26%;left:4%;animation-delay:1.7s;font-size:20px}
+#yk .fl span:nth-child(6){bottom:16%;right:6%;animation-delay:.3s;font-size:13px}
+#yk .fl span:nth-child(7){bottom:8%;left:14%;animation-delay:2.8s;font-size:16px}
+#yk .fl span:nth-child(8){bottom:5%;right:18%;animation-delay:1.4s;font-size:14px}
+@keyframes ykflt{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+#yk .hdr { position:relative;z-index:1;text-align:center;width:100%;max-width:420px;margin:0 auto 10px; }
+#yk .brand { font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:13px !important;letter-spacing:.26em !important;color:#e080b0 !important;margin-bottom:2px;display:block; }
+#yk .ttl-sub { font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:clamp(13px,3.5vw,16px) !important;background:linear-gradient(135deg,#ff80c0 0%,#c070e8 45%,#70b0f8 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;letter-spacing:.18em !important;display:block;margin-bottom:1px; }
+#yk .ttl { font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:clamp(28px,8vw,38px) !important;background:linear-gradient(135deg,#ff80c0 0%,#c070e8 45%,#70b0f8 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;letter-spacing:.1em !important;line-height:1.15 !important;display:block; }
+#yk .fy { font-size:20px !important;-webkit-text-fill-color:initial !important; }
+#yk .card { position:relative;z-index:1;background-color:#fffafd !important;border-radius:28px !important;padding:20px 20px 18px !important;width:100% !important;max-width:420px !important;margin:0 auto 12px !important;box-shadow:0 6px 28px rgba(220,140,200,.18),0 2px 8px rgba(180,140,220,.1) !important; }
+#yk .slbl { text-align:center !important;font-family:'Yomogi',cursive !important;font-size:11px !important;color:#d890b8 !important;margin-bottom:8px !important;letter-spacing:.1em !important;display:block !important; }
+#yk .urow { display:flex !important;justify-content:center !important;gap:10px !important;margin-bottom:12px !important; }
+#yk .ubtn { background-color:#ffe0f0 !important;border:2px solid #f0b0d0 !important;border-radius:18px !important;padding:7px 28px !important;font-family:'Nunito',sans-serif !important;font-size:14px !important;font-weight:800 !important;color:#b85090 !important;cursor:pointer !important;-webkit-appearance:none !important;appearance:none !important; }
+#yk .ubtn:hover { background-color:#ffd0e8 !important; }
+#yk .ubtn.active { background:linear-gradient(135deg,#ffb0d8,#e070c0) !important;border-color:transparent !important;color:#ffffff !important;box-shadow:0 3px 10px rgba(220,100,180,.4) !important; }
+#yk .prow { display:flex !important;gap:7px !important;justify-content:center !important;margin-bottom:12px !important;flex-wrap:wrap !important; }
+#yk .pre { background-color:#ffe0f0 !important;border:2px solid #f0b0d0 !important;border-radius:14px !important;padding:5px 13px !important;font-family:'Nunito',sans-serif !important;font-size:13px !important;font-weight:800 !important;color:#b85090 !important;cursor:pointer !important;-webkit-appearance:none !important;appearance:none !important;transition:transform .15s !important; }
+#yk .pre:hover { background-color:#ffd0e8 !important;transform:translateY(-1px) !important; }
+#yk .pre.active { background:linear-gradient(135deg,#ffb8d8,#e878c8) !important;border-color:transparent !important;color:#ffffff !important;box-shadow:0 2px 8px rgba(220,100,180,.35) !important; }
+#yk .pre-sec { background-color:#e0f2fd !important;border:2px solid #a8d8f8 !important;color:#3898d0 !important; }
+#yk .pre-sec:hover { background-color:#c8e8f8 !important; }
+#yk .pre-sec.active { background:linear-gradient(135deg,#90d0f8,#4898d8) !important;border-color:transparent !important;color:#ffffff !important;box-shadow:0 2px 8px rgba(70,150,220,.35) !important; }
+#yk .crow { display:flex !important;align-items:center !important;gap:6px !important;justify-content:center !important;margin-bottom:12px !important;flex-wrap:wrap !important; }
+#yk .crow label { font-family:'Yomogi',cursive !important;font-size:12px !important;color:#c06898 !important; }
+#yk .cinp { width:54px !important;text-align:center !important;padding:5px 4px !important;border:2px solid #f0b0d0 !important;border-radius:12px !important;font-family:'Nunito',sans-serif !important;font-size:16px !important;font-weight:800 !important;color:#b84080 !important;background-color:#fff5fa !important;outline:none !important;-webkit-appearance:none !important;appearance:none !important; }
+#yk .cinp:focus { border-color:#e870b8 !important; }
+#yk .csep { font-family:'Nunito',sans-serif !important;font-size:18px !important;font-weight:900 !important;color:#e090c0 !important; }
+#yk .cset-btn { background:linear-gradient(135deg,#ffb8d8,#e070c0) !important;border:none !important;border-radius:12px !important;padding:6px 12px !important;font-family:'Nunito',sans-serif !important;font-size:12px !important;font-weight:800 !important;color:#fff !important;cursor:pointer !important;-webkit-appearance:none !important;appearance:none !important; }
+#yk .dw { text-align:center !important;margin-bottom:10px !important; }
+#yk .tbig { font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:clamp(54px,14vw,68px) !important;background:linear-gradient(135deg,#ff70b8,#c060e0 50%,#60a8f8) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;line-height:1 !important;letter-spacing:.02em !important;display:block !important; }
+#yk .tbig.pulse { animation:ykpulse 1s ease-in-out infinite !important; }
+@keyframes ykpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+#yk .baro { height:10px !important;background-color:#fde0f0 !important;border-radius:999px !important;overflow:hidden !important;margin-bottom:14px !important; }
+#yk .bari { height:100% !important;border-radius:999px !important;background:linear-gradient(90deg,#ffb0d8,#d090f0,#90d0f8,#90f0d8) !important;width:100% !important;transition:width .5s ease !important; }
+#yk .brow { display:flex !important;gap:14px !important;align-items:center !important;justify-content:center !important;margin-bottom:10px !important; }
+#yk .bmain { width:76px !important;height:76px !important;border-radius:50% !important;border:none !important;background:linear-gradient(145deg,#ff90cc,#d050b8,#a838a8) !important;color:#ffffff !important;font-size:30px !important;box-shadow:0 4px 18px rgba(200,60,170,.5) !important;display:flex !important;align-items:center !important;justify-content:center !important;flex-shrink:0 !important;cursor:pointer !important;-webkit-appearance:none !important;appearance:none !important;transition:transform .15s !important; }
+#yk .bmain:hover { transform:scale(1.08) !important;box-shadow:0 6px 24px rgba(200,60,170,.6) !important; }
+#yk .bmain:active { transform:scale(.95) !important; }
+#yk .bsub-l { width:52px !important;height:52px !important;border-radius:50% !important;border:2px solid #a8e8d0 !important;background-color:#e0faf2 !important;color:#40b890 !important;font-size:20px !important;display:flex !important;align-items:center !important;justify-content:center !important;flex-shrink:0 !important;cursor:pointer !important;font-family:'Nunito',sans-serif !important;font-weight:900 !important;-webkit-appearance:none !important;appearance:none !important;transition:background-color .15s,transform .15s !important; }
+#yk .bsub-l:hover { background-color:#c8f5e8 !important;transform:scale(1.06) !important; }
+#yk .bsub-l:active { transform:scale(.96) !important; }
+#yk .bsub-r { width:52px !important;height:52px !important;border-radius:50% !important;border:2px solid #a8d8f8 !important;background-color:#e0f2fd !important;color:#3898d0 !important;font-size:20px !important;display:flex !important;align-items:center !important;justify-content:center !important;flex-shrink:0 !important;cursor:pointer !important;font-family:'Nunito',sans-serif !important;font-weight:900 !important;-webkit-appearance:none !important;appearance:none !important;transition:background-color .15s,transform .15s !important; }
+#yk .bsub-r:hover { background-color:#c8e8f8 !important;transform:scale(1.06) !important; }
+#yk .bsub-r:active { transform:scale(.96) !important; }
+#yk .breset-wrap { display:flex !important;justify-content:center !important;margin-bottom:10px !important; }
+#yk .breset { background:linear-gradient(135deg,#ffe0a8,#f8b840) !important;border:none !important;border-radius:20px !important;padding:7px 28px !important;font-family:'Nunito',sans-serif !important;font-size:13px !important;font-weight:800 !important;color:#fff !important;cursor:pointer !important;box-shadow:0 3px 12px rgba(240,170,50,.4) !important;-webkit-appearance:none !important;appearance:none !important;transition:transform .15s !important;display:flex !important;align-items:center !important;gap:6px !important; }
+#yk .breset:hover { transform:scale(1.05) !important; }
+#yk .breset:active { transform:scale(.97) !important; }
+#yk .srow { display:flex !important;align-items:center !important;justify-content:center !important;margin-bottom:10px !important; }
+#yk .sbtn { background-color:#fff0d8 !important;border:2px solid #f8d090 !important;border-radius:18px !important;padding:5px 14px !important;font-family:'Nunito',sans-serif !important;font-size:12px !important;font-weight:800 !important;color:#c08030 !important;display:flex !important;align-items:center !important;gap:4px !important;cursor:pointer !important;-webkit-appearance:none !important;appearance:none !important; }
+#yk .sbtn:hover { background-color:#ffe8c0 !important; }
+#yk .sbtn.active { background:linear-gradient(135deg,#ffd080,#f0a838) !important;border-color:transparent !important;color:#ffffff !important;box-shadow:0 2px 8px rgba(240,160,50,.4) !important; }
+#yk .msg { text-align:center !important;font-family:'Yomogi',cursive !important;font-size:14px !important;color:#d05898 !important;min-height:22px !important;display:block !important; }
+@keyframes ykmsg{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+#yk .hint { text-align:center !important;font-family:'Nunito',sans-serif !important;font-weight:700 !important;font-size:11px !important;color:#c8a0b8 !important;line-height:1.9 !important;margin-bottom:6px !important;display:block !important; }
+@media(max-width:600px){#yk .hint{display:none !important;}}
+#yk .lcard { position:relative;z-index:1;background-color:#fffafd !important;border-radius:24px !important;padding:16px 20px !important;width:100% !important;max-width:420px !important;margin:0 auto !important;box-shadow:0 4px 20px rgba(220,140,200,.14) !important; }
+#yk .ltitle { font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:14px !important;color:#d060a8 !important;margin-bottom:10px !important;display:flex !important;align-items:center !important;gap:5px !important; }
+#yk .llist { display:flex !important;flex-direction:column !important;gap:5px !important;max-height:130px !important;overflow-y:auto !important; }
+#yk .litem { display:flex !important;justify-content:space-between !important;align-items:center !important;background:linear-gradient(90deg,#ffe8f4,#e8e4ff) !important;border-radius:10px !important;padding:6px 12px !important;font-family:'Nunito',sans-serif !important;font-size:12px !important;font-weight:800 !important;color:#b84090 !important; }
+#yk .lempty { font-family:'Yomogi',cursive !important;font-size:12px !important;color:#d0a8c0 !important;text-align:center !important;padding:6px 0 !important;display:block !important; }
+#yk .lclr { background-color:transparent !important;border:1px solid #f0b0d0 !important;border-radius:10px !important;padding:3px 12px !important;font-family:'Nunito',sans-serif !important;font-weight:700 !important;font-size:11px !important;color:#d06090 !important;cursor:pointer !important;margin-top:8px !important;display:block !important;margin-left:auto !important; }
+#yk .lclr:hover { background-color:#ffe8f4 !important; }
+#yk .cft { position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:999; }
+#yk .cp { position:absolute;animation:ykfall linear forwards;border-radius:3px; }
+@keyframes ykfall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+#yk .banner { position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#ff90cc,#d050b8) !important;color:#fff !important;border-radius:99px;padding:10px 28px;font-family:'Nunito',sans-serif !important;font-weight:900 !important;font-size:15px;z-index:998;box-shadow:0 4px 16px rgba(200,60,170,.4);opacity:0;transition:opacity .4s;pointer-events:none;white-space:nowrap; }
+#yk .banner.show { opacity:1; }
+</style>
+</head>
+<body>
+<div id="yk">
+<div class="fl"><span>🌸</span><span>🍋</span><span>🌷</span><span>🩵</span><span>🦋</span><span>🍓</span><span>🌙</span><span>🍬</span></div>
+<div class="hdr">
+  <span class="brand">✿ YUCCHI'S ✿</span>
+  <span class="ttl-sub">HAPPY</span>
+  <span class="ttl"><span class="fy">🧚</span> TIMER <span class="fy">🧚</span></span>
+</div>
+<div style="height:12px"></div>
+<div class="card">
+  <span class="slbl">カウント単位</span>
+  <div class="urow">
+    <button class="ubtn active" id="ubtn-min" onclick="ykToggleUnit('分')">分</button>
+    <button class="ubtn" id="ubtn-sec" onclick="ykToggleUnit('秒')">秒</button>
+  </div>
+  <div class="prow" id="ykprow-min">
+    <button class="pre active" onclick="ykPickMin(1)">1分</button>
+    <button class="pre" onclick="ykPickMin(5)">5分</button>
+    <button class="pre" onclick="ykPickMin(10)">10分</button>
+    <button class="pre" onclick="ykPickMin(30)">30分</button>
+  </div>
+  <div class="prow" id="ykprow-sec" style="display:none">
+    <button class="pre pre-sec" onclick="ykPickSec(10)">10秒</button>
+    <button class="pre pre-sec" onclick="ykPickSec(20)">20秒</button>
+    <button class="pre pre-sec" onclick="ykPickSec(30)">30秒</button>
+    <button class="pre pre-sec" onclick="ykPickSec(45)">45秒</button>
+  </div>
+  <div class="crow">
+    <label>⏱ カスタム</label>
+    <input class="cinp" id="ykci-m" type="number" min="0" max="99" value="1">
+    <label>分</label>
+    <span class="csep">:</span>
+    <input class="cinp" id="ykci-s" type="number" min="0" max="59" value="0">
+    <label>秒</label>
+    <button class="cset-btn" onclick="ykApplyCustom()">セット</button>
+  </div>
+  <div class="dw"><span class="tbig" id="yktb">01:00</span></div>
+  <div class="baro"><div class="bari" id="ykbi"></div></div>
+  <div class="brow">
+    <button class="bsub-l" onclick="ykLap()">📌</button>
+    <button class="bmain" id="yksb" onclick="ykToggle()">▶</button>
+    <button class="bsub-r" onclick="ykReset()">↺</button>
+  </div>
+  <div class="breset-wrap">
+    <button class="breset" onclick="ykReset()">🔄 リセット</button>
+  </div>
+  <div class="srow">
+    <button class="sbtn active" id="yksndbtn" onclick="ykToggleSound()">
+      <span id="yksi">🔔</span><span id="yksl">終了音 ON</span>
+    </button>
+  </div>
+  <span class="hint">Space / Enter ▶⏸ &nbsp;｜&nbsp; Backspace リセット</span>
+  <span class="msg" id="ykmsg">今日もかわいくがんばろ〜！🌸</span>
+</div>
+<div style="height:10px"></div>
+<div class="lcard">
+  <div class="ltitle">📌 Lap Record</div>
+  <div class="llist" id="ykll"><span class="lempty" id="ykle">まだ記録なし…🌸</span></div>
+  <button class="lclr" onclick="ykClearLaps()">クリア ✦</button>
+</div>
+<div class="cft" id="ykcft"></div>
+<div class="banner" id="ykbn"></div>
+</div>
+<script>
+var yktot=60,ykrem=60,ykrun=false,yktmr=null,yklc=0,yksnd=true;
+var ykMinOn=true,ykSecOn=false,ykSelMin=1,ykSelSec=0;
+var YKM=['いい調子だよ〜！✨','きみならできる！🌸','かわいく集中中🦋','ファイトっ！⭐','もうちょっと！🌷','がんばってるね〜！🌙'];
+var YKD=['おつかれさまでした〜！🎉','やったね！えらすぎ✨','すごい！完璧だよ🌸','よくできました💫'];
+function ykPlayOnce(ms){setTimeout(function(){try{var ctx=new(window.AudioContext||window.webkitAudioContext)();[[523.25,0],[659.25,.2],[783.99,.4],[1046.5,.6]].forEach(function(p){var o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=p[0];var s=ctx.currentTime+p[1],e=s+.25;g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(.3,s+.03);g.gain.linearRampToValueAtTime(0,e);o.start(s);o.stop(e+.05);});var o2=ctx.createOscillator(),g2=ctx.createGain();o2.connect(g2);g2.connect(ctx.destination);o2.type='triangle';o2.frequency.setValueAtTime(1200,ctx.currentTime+.85);o2.frequency.exponentialRampToValueAtTime(800,ctx.currentTime+1.2);g2.gain.setValueAtTime(0,ctx.currentTime+.85);g2.gain.linearRampToValueAtTime(.18,ctx.currentTime+.88);g2.gain.linearRampToValueAtTime(0,ctx.currentTime+1.2);o2.start(ctx.currentTime+.85);o2.stop(ctx.currentTime+1.25);}catch(e){}},ms);}
+function ykPlaySound(){if(!yksnd)return;ykPlayOnce(0);ykPlayOnce(1400);ykPlayOnce(2800);}
+function ykToggleSound(){yksnd=!yksnd;document.getElementById('yksndbtn').classList.toggle('active',yksnd);document.getElementById('yksi').textContent=yksnd?'🔔':'🔕';document.getElementById('yksl').textContent=yksnd?'終了音 ON':'終了音 OFF';}
+function ykFmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function ykUpd(){document.getElementById('yktb').textContent=ykFmt(ykrem);document.getElementById('ykbi').style.width=((yktot>0?ykrem/yktot:1)*100)+'%';}
+function ykToggleUnit(u){if(ykrun)return;if(u==='分'){ykMinOn=!ykMinOn;if(!ykMinOn&&!ykSecOn)ykMinOn=true;}else{ykSecOn=!ykSecOn;if(!ykMinOn&&!ykSecOn)ykSecOn=true;if(ykSecOn)ykSelSec=0;else ykSelSec=0;}document.getElementById('ubtn-min').classList.toggle('active',ykMinOn);document.getElementById('ubtn-sec').classList.toggle('active',ykSecOn);document.getElementById('ykprow-min').style.display=ykMinOn?'':'none';document.getElementById('ykprow-sec').style.display=ykSecOn?'':'none';ykApplySelection();}
+function ykPickMin(m){if(ykrun)return;ykSelMin=m;document.querySelectorAll('#ykprow-min .pre').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent)===m);});ykApplySelection();ykSetMsg('今日もかわいくがんばろ〜！🌸');}
+function ykPickSec(s){if(ykrun)return;ykSelSec=s;document.querySelectorAll('#ykprow-sec .pre').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent)===s);});ykApplySelection();ykSetMsg('今日もかわいくがんばろ〜！🌸');}
+function ykApplySelection(){var m=ykMinOn?ykSelMin:0,s=ykSecOn?ykSelSec:0,tot=m*60+s;if(tot<1)tot=1;yktot=tot;ykrem=tot;document.getElementById('ykci-m').value=m;document.getElementById('ykci-s').value=s;ykUpd();}
+function ykApplyCustom(){if(ykrun)return;var m=Math.max(0,Math.min(99,parseInt(document.getElementById('ykci-m').value)||0));var s=Math.max(0,Math.min(59,parseInt(document.getElementById('ykci-s').value)||0));var v=m*60+s;if(v<1)v=1;yktot=v;ykrem=v;ykSelMin=m;ykSelSec=s;document.querySelectorAll('#yk .pre').forEach(function(b){b.classList.remove('active');});ykUpd();ykSetMsg('セットしたよ！✨');}
+function ykToggle(){if(ykrun){clearInterval(yktmr);ykrun=false;document.getElementById('yksb').textContent='▶';document.getElementById('yktb').classList.remove('pulse');ykSetMsg('ちょっと休憩もいいよ〜🌸');}else{if(ykrem===0)return;ykrun=true;document.getElementById('yksb').textContent='⏸';document.getElementById('yktb').classList.add('pulse');ykSetMsg(YKM[Math.floor(Math.random()*YKM.length)]);yktmr=setInterval(ykTick,1000);}}
+function ykTick(){ykrem--;ykUpd();if(ykrem%60===0&&ykrem>0)ykSetMsg(YKM[Math.floor(Math.random()*YKM.length)]);if(ykrem<=0){clearInterval(yktmr);ykrun=false;document.getElementById('yksb').textContent='▶';document.getElementById('yktb').classList.remove('pulse');ykSetMsg(YKD[Math.floor(Math.random()*YKD.length)]);ykPlaySound();ykLaunch();ykShowBanner('🎉 タイマー終了！おつかれさま！');}}
+function ykReset(){clearInterval(yktmr);ykrun=false;document.getElementById('yksb').textContent='▶';document.getElementById('yktb').classList.remove('pulse');ykrem=yktot;ykUpd();ykSetMsg('今日もかわいくがんばろ〜！🌸');}
+function ykLap(){yklc++;var el=document.createElement('div');el.className='litem';el.innerHTML='<span>📌 Lap '+yklc+'</span><span>'+ykFmt(yktot-ykrem)+'</span>';var list=document.getElementById('ykll');document.getElementById('ykle').style.display='none';list.insertBefore(el,list.children[1]||null);ykSetMsg('ラップ記録したよ！📌');}
+function ykClearLaps(){yklc=0;document.getElementById('ykll').innerHTML='<span class="lempty" id="ykle">まだ記録なし…🌸</span>';}
+function ykSetMsg(t){var el=document.getElementById('ykmsg');el.textContent=t;el.style.animation='none';requestAnimationFrame(function(){el.style.animation='ykmsg .4s ease';});}
+function ykShowBanner(t){var b=document.getElementById('ykbn');b.textContent=t;b.classList.add('show');setTimeout(function(){b.classList.remove('show');},3500);}
+function ykLaunch(){var c=document.getElementById('ykcft');c.innerHTML='';var cols=['#ffb0d8','#ffd080','#a8f0d8','#a8d8f8','#f8a8d8','#d0a8f8'];for(var i=0;i<90;i++){var el=document.createElement('div');el.className='cp';el.style.left=Math.random()*100+'vw';el.style.background=cols[Math.floor(Math.random()*cols.length)];el.style.width=(5+Math.random()*7)+'px';el.style.height=(5+Math.random()*7)+'px';el.style.borderRadius=Math.random()>.5?'50%':'3px';el.style.animationDuration=(2+Math.random()*2)+'s';el.style.animationDelay=(Math.random()*.6)+'s';c.appendChild(el);}setTimeout(function(){c.innerHTML='';},5000);}
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.key===' '||e.key==='Enter'){e.preventDefault();ykToggle();}if(e.key==='Backspace'){e.preventDefault();ykReset();}});
+ykApplySelection();
+</script>
+</body>
+</html>
